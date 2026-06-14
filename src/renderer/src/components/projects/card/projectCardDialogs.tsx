@@ -43,7 +43,7 @@ interface ProjectCardDialogsProps {
  * Renders all dialogs and context menus for the project card.
  * File editor state lives here so it survives context menu unmount.
  */
-export function ProjectCardDialogs({
+export function ProjectCardDialogs({}: any): JSX.Element {
   ctxMenu,
   showLogs,
   showCommitDialog,

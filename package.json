@@ -51,6 +51,7 @@
     "dotenv": "^17.4.2",
     "electron-updater": "^6.8.3",
     "lucide-react": "^1.8.0",
+    "node-addon-api": "^8.8.0",
     "react-router-dom": "^7.14.0",
     "react-virtualized-auto-sizer": "^2.0.3",
     "react-window": "^2.2.7"
