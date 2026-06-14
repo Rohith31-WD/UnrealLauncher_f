@@ -10,7 +10,7 @@ const COLLAPSED_WIDTH = 52
 /**
  * Custom hook for managing Sidebar state and drag behavior
  */
-export function useSidebarState() {
+export function useSidebarState(): any {
   const location = useLocation()
   const navigate = useNavigate()
 

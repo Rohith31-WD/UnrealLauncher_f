@@ -1,6 +1,6 @@
 // Copyright (c) 2026 NeelFrostrain. All rights reserved.
 
-import os from 'os'
+import * as os from 'os'
 import { execSync } from 'child_process'
 
 export interface SystemInfo {

@@ -29,7 +29,7 @@ Module.prototype.require = function (this: any, id: string, ...args: unknown[]) 
       }
     }
   }
-  return originalRequire.apply(this, arguments)
+  return originalRequire.apply(this, ..._args)
 }
 
 // Helper to clean up a directory recursively

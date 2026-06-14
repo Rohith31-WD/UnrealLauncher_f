@@ -10,7 +10,7 @@ interface SidebarControlsProps {
 /**
  * Renders the collapse toggle and drag handle
  */
-export function SidebarControls({
+export function SidebarControls({ collapsed, onToggleCollapse, onMouseDown }: SidebarControlsProps): JSX.Element {
   collapsed,
   onToggleCollapse,
   onMouseDown

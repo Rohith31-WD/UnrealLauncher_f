@@ -21,11 +21,14 @@ function spawnDetachedProcess(executable: string, args: string[]): void {
         stdio: 'ignore',
         windowsHide: true
       }).unref()
-    } catch (err) {
+    } catch (_err) {
+      console.error(err)
       // Fallback to direct spawn if start fails for any reason
       try {
         spawn(executable, args, { detached: true, stdio: 'ignore', windowsHide: true }).unref()
-      } catch {}
+      } catch {
+      /* ignore */
+    }
     }
     return
   }
@@ -109,11 +112,17 @@ function findEditorExecutable(engineAssociation: string): string {
               ) {
                 return full
               }
-            } catch {}
+            } catch {
+      /* ignore */
+    }
           }
-        } catch {}
+        } catch {
+      /* ignore */
+    }
       }
-    } catch {}
+    } catch {
+      /* ignore */
+    }
     return ''
   }
 
@@ -202,6 +211,7 @@ export async function handleLaunchProject(projectPath: string): Promise<Record<s
       logger.info('project', 'Project launch handed to Windows file association', { uprojectPath })
       return { success: true }
     } catch (err) {
+      console.error(err)
       logger.error('project', 'Project launch failed through file association', {
         uprojectPath,
         error: err
@@ -238,6 +248,7 @@ export async function handleLaunchProject(projectPath: string): Promise<Record<s
     logger.info('project', 'Project editor process spawned', { editorExe, uprojectPath })
     return { success: true }
   } catch (err) {
+      console.error(err)
     logger.error('project', 'Project editor spawn failed', { editorExe, uprojectPath, error: err })
     return { success: false, error: err instanceof Error ? err.message : 'Unknown error' }
   }
@@ -301,6 +312,7 @@ export async function handleLaunchProjectWithConfig(
     })
     return { success: true }
   } catch (err) {
+      console.error(err)
     logger.error('project', 'Project config launch spawn failed', {
       editorExe,
       uprojectPath,
@@ -363,6 +375,7 @@ export async function handleLaunchProjectGame(
     logger.info('project', 'Project game process spawned', { editorExe, uprojectPath })
     return { success: true }
   } catch (err) {
+      console.error(err)
     logger.error('project', 'Project game spawn failed', { editorExe, uprojectPath, error: err })
     return { success: false, error: err instanceof Error ? err.message : 'Unknown error' }
   }
